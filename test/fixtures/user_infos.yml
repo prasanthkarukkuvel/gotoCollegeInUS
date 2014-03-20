@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  address1: MyString
+  address2: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  pincode: 
+  college: MyString
+  yearofpassing: 
+  gre: 
+  toefl: 
+  transit: 
+  user_id: 
+
+two:
+  address1: MyString
+  address2: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  pincode: 
+  college: MyString
+  yearofpassing: 
+  gre: 
+  toefl: 
+  transit: 
+  user_id: 

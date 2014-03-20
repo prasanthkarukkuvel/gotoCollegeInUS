@@ -1,0 +1,7 @@
+<% if session[:sign] != "true" %>
+<%= render partial:"public_home" %>
+<% elsif session[:sign] == "true" && session[:key]!="" && session[:type]=="user" %>
+<%= render partial:"public_user" %>
+<% elsif session[:sign] == "true" && session[:key]!="" && session[:type]=="page" %>
+<div>page</div>
+<% end %>

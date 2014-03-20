@@ -1,0 +1,37 @@
+<div class="show-title">Page Deletion Process <span>| <%= @set[:admin].email %></span><p id="cshw" class="b-org" onclick="cshow()">x</p></div>
+<div class="show-confirmation">
+  <div class="confirmation-title" style="color:#f00">Deletion Process failed</div>
+  <div class="confirmation-content">
+    <div class="content-info">
+
+      <div style="padding:10px 5px 5px 5px; line-height:23px; width:700px;margin-left:40px; text-align:justify">An unexpected error occured while sending mail to the corresponding Page Admin. Try redeleting or send a report to super admin.</div>
+      
+      <ul>
+        <% if @set[:d] == "show" %>
+        <li id="note-adder" style="display:none"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+
+        <li id="note-content" style="display:block"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"><%= @set[:n] %></textarea><div onclick="removenote()">Cancel</div></li>
+
+        <% else %>
+
+        <li id="note-adder"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+
+        <li id="note-content"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"></textarea><div onclick="removenote()">Cancle</div></li>
+
+
+        <% end %>
+
+      </ul>
+      
+      <p></p>
+      <div class="confirm-controls" style="position:relative;bottom:15px">
+        <input type="submit"  value="Resend Request" class="b-org" onclick="pdelete(this)" />
+        <% if @set[:d] == "show" %>
+          <input type="hidden" id="note-val" data-sector="<%= @set[:t] %>" value="1" />
+        <% else %>
+          <input type="hidden" id="note-val" data-sector="<%= @set[:t] %>" value="0" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

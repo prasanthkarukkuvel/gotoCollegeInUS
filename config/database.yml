@@ -1,0 +1,32 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gtc_development
+  pool: 5
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3306
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gtc_test
+  pool: 5
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3306
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gtc_production
+  pool: 5
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3306

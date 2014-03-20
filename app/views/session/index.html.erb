@@ -1,0 +1,54 @@
+<%= form_for(:session,url:"/u/"+@follow+"/l/",html:{id:"user-login"}) do |f| %>
+<div class="cls-login">
+      <div>Login</div>
+      <% if @error == "true" %>
+      <div class="login-error-info">Incorrect Username or Password</div>
+      <% end %>
+      <div>
+        <%= f.text_field :username, placeholder:"Username" %>
+        
+        <div class="login-error" id="username-failed">Specify Username</div> </div>
+      <div>
+        
+        <%= f.password_field :password, placeholder:"Password" %>
+        <div class="login-error" id="password-failed">Specify Password</div> </div>
+      
+      <div>
+        <input type="submit" class="org" value="Login"/>
+        <input type="reset" class="blue" value="Clear"/>
+      </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+
+$(function(){
+  $("#user-login").submit(function(){
+
+    if($("#session_username").val().length < 1)
+    {
+        $("#username-failed").fadeIn(100);
+        $("#session_username").focus();
+        return false
+    }
+    else{
+
+        $("#username-failed").fadeOut(100);
+    }
+    if($("#session_password").val().length < 1)
+    {
+        $("#password-failed").fadeIn(100);
+        
+        return false
+    }
+    else{
+
+      $("#password-failed").fadeOut(100);
+
+    }
+
+  });
+});
+
+
+</script>

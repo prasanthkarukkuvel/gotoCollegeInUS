@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1 style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding: 10px; color: #0890b2;">Welcome to Goto College in US, <span style="color:#333"><%= @page[:name] %></span></h1>
+    <p style="padding:5px 15px;font-size:18px;line-height:28px; text-align:justify">
+      Your request for the page " <%= @page[:title] %> " has been rejected due to invalid information or duplicate datas. All your information were deleted. Please try again with the vaild information</p>
+    
+    <% if @page[:d] == "show" %>
+    <p style="padding:5px 15px;font-size:18px;">
+      Note : <%= @page[:n] %>
+    </p>
+    <% end %>
+    <p style="padding:5px 15px;font-size:18px;">
+      To create a new page, just follow this link: http://localhost:3000/page/create
+    </p>
+    <p style="padding:5px 15px;font-size:18px; color:#222">Thanks for joining and have a great day!</p>
+  </body>
+</html> 

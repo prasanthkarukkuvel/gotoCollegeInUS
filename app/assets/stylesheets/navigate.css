@@ -1,0 +1,57 @@
+.navigation {
+	width: 992px;
+	height: 43px;
+	margin-left:5px;
+}
+#example-one {
+	margin: 0 auto 0 auto;
+	list-style: none;
+	position: relative;
+	width: 960px;
+}
+#example-one li {
+	display: inline-block;
+}
+#example-one li:not(:last-of-type):after {
+	content: "";
+	background: url('bd-image.png') no-repeat -469px -5px;
+	width: 5px;
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	padding: 5px;
+}
+
+#example-one li a {
+	color: #ccc;
+	font-size: 18px;
+	display: inline-block;
+	padding: 7px 15px;
+	text-decoration: none;
+	text-transform: capitalize;
+	-webkit-transition: all 0.2s ease-in-out;
+										-moz-transition: all 0.2s ease-in-out;
+										-ms-transition: all 0.2s ease-in-out;
+										-o-transition: all 0.2s ease-in-out;
+										transition: all 0.2s ease-in-out;
+}
+#example-one li a:hover {
+	color: white;
+}
+#magic-line {
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 100px;
+	height: 3px;
+	-webkit-box-shadow: 0 0 #000, inset 0 5px 5px rgba(0,0,0,.14);
+	-moz-box-shadow: 0 0 #000, inset 0 5px 5px rgba(0,0,0,.14);
+	box-shadow: 0 0 #000, inset 0 5px 5px rgba(0,0,0,.14);
+	border: solid 1px #030303;
+	background-image: -webkit-linear-gradient(left, #000304, #01324b 6%, #0cbef9 39%, #60caed 50%, #0cbef9 61%, #03334c 92%, #00070a);
+	background-image: -moz-linear-gradient(left, #000304, #01324b 6%, #0cbef9 39%, #60caed 50%, #0cbef9 61%, #03334c 92%, #00070a);
+	background-image: -o-linear-gradient(left, #000304, #01324b 6%, #0cbef9 39%, #60caed 50%, #0cbef9 61%, #03334c 92%, #00070a);
+	background-image: -ms-linear-gradient(left, #000304, #01324b 6%, #0cbef9 39%, #60caed 50%, #0cbef9 61%, #03334c 92%, #00070a);
+	background-image: linear-gradient(to right, #000304, #01324b 6%, #0cbef9 39%, #60caed 50%, #0cbef9 61%, #03334c 92%, #00070a);
+}
+.current_page_item a {color:#fff !important;   font-size:20px !important;}

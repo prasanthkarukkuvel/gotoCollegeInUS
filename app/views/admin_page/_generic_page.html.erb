@@ -1,0 +1,15 @@
+<% a = 0 %>
+<% for p in @page do %>
+<% a = a+1; %>
+<tr  data-key=<%= "#{p.key}" %>>
+  <td><div class="td-layout td-layout-sno"><%= a %></div></td>
+  <td><div class="td-layout td-layout-code"><%= p.page_info.code %></div></td>
+  <td><div class="td-layout td-layout-name"><%= p.page_info.title %></div></td>
+  <td><div class="td-layout td-layout-date"><%= time_ago_in_words(p.created_at)+" ago" %></div></td>
+  <td><div class="td-layout td-layout-controls">
+    <div class="view" onclick="view(this)">view</div>
+    <div class="verify" onclick="verify(this)">verify</div>
+    <div class="delete" onclick="sdelete(this)"> delete</div>
+  </div></td>
+</tr>
+<% end %>

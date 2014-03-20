@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1 style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding: 10px; color: #0890b2;">Welcome to Goto College in US, <span style="color:#333"><%= @user.firstname %></span></h1>
+    <p style="padding:5px 15px;font-size:18px;">
+      You have successfully signed up to gotocollegeinus.com,
+      your Email ID : <%= @user.email %>.<br/>
+    </p>
+    <p style="padding:5px 15px;font-size:18px;">
+      To login to the site, just follow this link: http://localhost:3000/activate/user/<%= @user.key %>
+    </p>
+    <p style="padding:5px 15px;font-size:18px; color:#222">Thanks for joining and have a great day!</p>
+  </body>
+</html>

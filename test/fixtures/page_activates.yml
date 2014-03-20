@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: MyString
+  note: MyString
+  admin_user_id: 1
+  page_id: 1
+
+two:
+  key: MyString
+  note: MyString
+  admin_user_id: 1
+  page_id: 1

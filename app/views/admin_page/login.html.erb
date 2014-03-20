@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gotocollegeinus</title>
+  <%= stylesheet_link_tag    "admin_page", :media => "all" %>
+  
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+	<div class="header">
+  <div class="logo-holder">
+    
+    <div class="logo"></div>
+    <div class="divider"></div>
+    <div class="admin-logo"></div>
+  </div>
+</div>
+<div class="layout">
+  <div class="login-layout">
+    <div class="login-title">Login <span>| Admin Users</span></div>
+    <div class="login-holder">
+      <div>Email</div>
+      <div><input type="email"/><div class="txt-error">you can't leave this as empty</div></div>
+    </div>
+    <div class="login-holder">
+      <div>Password</div>
+      <div><input type="password"/><div class="txt-error">you can't leave this as empty</div></div>
+    </div>
+    <div class="cls-error">invalid email or password</div>
+    <div class="login-control">
+      <input type="submit" value="Login" class="b-org"/>
+       <input type="reset" value="Clear" />
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-profile {
+	width: 1000px;
+	height: 600px;
+
+	& > div{
+		display: inline-block;
+		vertical-align: top;
+	}
+	
+	.left-side {
+		width: 250px;
+		height: 570px;
+		
+
+
+
+
+		.photo-main {
+			width: 220px;
+			height: 220px;
+			background:#fff;
+			margin:auto;
+			margin-top:10px;
+			box-shadow: 0 0 5px 1px #034354;
+		}
+		.photo {
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
+			background:#ccc;
+			margin:auto;
+			position: relative;
+			top:10px;
+
+			img{
+
+				width:200px;
+
+				vertical-align: top;
+			}
+		}
+		.info {
+			width: 240px;
+			
+			margin-left: 10px;
+
+			.name {
+				width: 230px;
+
+				padding:5px;
+				font-size:23px;
+				text-shadow:1px 1px 1px #000;
+			}
+			.address 
+			{
+				width: 230px;
+
+
+				font-size: 20px;
+				& > div{
+
+					width: 225px;
+					padding:5px 10px;
+					font-size: 16px;
+					color:#ccc;
+					text-shadow:1px 1px 1px #000;
+
+				}
+
+				.city {
+					
+				}
+				.e-mail {
+
+				}
+				.date {
+					
+				}
+			}
+			.following {
+				width: 250px;
+				height: 80px;
+				margin: 20px auto 0 -7px;
+				text-align: center;
+				background: #2b2a2b;
+				background: -moz-linear-gradient(top,  #2b2a2b 0%, #000000 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2b2a2b), color-stop(100%,#000000));
+				background: -webkit-linear-gradient(top,  #2b2a2b 0%,#000000 100%);
+				background: -o-linear-gradient(top,  #2b2a2b 0%,#000000 100%);
+				background: -ms-linear-gradient(top,  #2b2a2b 0%,#000000 100%);
+				background: linear-gradient(to bottom,  #2b2a2b 0%,#000000 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2a2b', endColorstr='#000000',GradientType=0 );
+
+				border-radius: 5px;
+				padding:8px 0;
+				border-top:#132937 thin solid;
+				border-bottom:#132937 thin solid;
+				box-shadow:inset 0 0 0 1px #000;
+
+				-webkit-box-reflect: below 3px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(255,255,255,0.5)));
+				
+
+				& > div{
+
+					width: 75px;
+					font-size: 20px;
+					display: inline-block;
+					vertical-align: middle;
+					
+					text-align: center;
+
+					box-shadow: 0 0 5px 1px #000;
+					& > div{
+						margin:auto;
+						text-align: center;
+						
+						width:74px;
+						
+						
+					}
+
+					& > div:first-child{
+
+						
+						
+						font-size: 42px;
+
+						background: url(bd-image.png)  #B1B2B4 no-repeat -364px -296px;
+						height:58px;
+						color:#111;
+						line-height: 58px;
+						text-align: center;
+						text-shadow:0px 1px 2px #fff;
+						border-top-left-radius: 5px;
+						border-top-right-radius: 5px;
+
+
+						
+
+					}
+					& > div:nth-child(2){
+
+						
+
+						font-size: 13px;
+						padding:4px 0px;
+						color:#fff;
+						background: #2b2a2b;
+						background: -moz-linear-gradient(top,  #2b2a2b 1%, #000000 100%);
+						background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#2b2a2b), color-stop(100%,#000000));
+						background: -webkit-linear-gradient(top,  #2b2a2b 1%,#000000 100%);
+						background: -o-linear-gradient(top,  #2b2a2b 1%,#000000 100%);
+						background: -ms-linear-gradient(top,  #2b2a2b 1%,#000000 100%);
+						background: linear-gradient(to bottom,  #2b2a2b 1%,#000000 100%);
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2a2b', endColorstr='#000000',GradientType=0 );
+
+						box-shadow: inset 0 0 1px 1px #0d0d0d;
+
+					}
+
+				}
+
+				
+			}
+		}
+	}
+
+	.right-side {
+		width: 742px;
+		height: 600px;
+		border: thin solid #000;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

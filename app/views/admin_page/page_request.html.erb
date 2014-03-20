@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gotocollegeinus</title>
+  <%= stylesheet_link_tag    "admin_page", :media => "all" %>
+  
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <div class="bg-display"></div>
+  <div class="view-show">
+    <div id="show-hide"></div>
+    <div id="show">
+
+    </div>
+  </div>
+  <div class="header">
+    <div class="logo-holder">
+      <div class="right-control">
+        <div class="name-holder">Jagdeesh Rajamani</div>
+        <div class="logout b-org">logout</div>
+      </div>
+      <div class="logo"></div>
+      <div class="divider"></div>
+      <div class="admin-logo"></div>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="navigate">
+      <ul>
+        <li><a href="#">Page Requests</a></li>
+      </ul>
+    </div>
+    <div class="title-error">
+      <div id="error">Error occured while accessing server</div>
+    </div>
+    <div class="table-holder">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th><div class="th-layout th-layout-sno">S.No</div></th>
+            <th><div class="th-layout th-layout-code">Code</div></th>
+            <th><div class="th-layout th-layout-name">College Name</div></th>
+            <th><div class="th-layout th-layout-date">Requested on</div></th>
+            <th><div class="th-layout th-layout-controls"> </div></th>
+          </tr>
+        </thead>
+        <tbody id="generic-tr">
+
+          <%= render partial: "generic_page" %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+<script>
+function send(a, b) {
+    $(".bg-display").fadeIn(200)
+    $.ajax({
+        url: "/get/page/" + b + "/?e=" + a,
+        type: "GET",
+        success: function (result) {
+
+                  
+            $("#error").parent().fadeOut(200);
+            $("#show").html(result).show("drop", {
+                direction: "up"
+            }, 500);
+
+          
+        },
+        error: function () {
+            $("#error").text("Unable locate the requested resource").parent().fadeIn(200);
+            $(".bg-display").fadeOut(300)
+        }
+    });
+}
+
+function getKey(a) {
+    return $(a).parents().eq(2).attr("data-key")
+}
+
+function view(a) {
+    send(getKey(a), "view")
+}
+
+function verify(a) {
+    send(getKey(a), "verify")
+}
+function sdelete(a){
+    send(getKey(a), "delete")
+}
+function cshow() {
+    $("#show").hide("drop", {
+        direction: "up"
+    }, 500).html("")
+    $(".bg-display").fadeOut(550)
+}
+
+function addnote() {
+
+    $("#note-area").css({"border-color":"#ccc","background-color":"#fff"})
+    $("#note-adder").hide("slide", {
+        direction: "up"
+    }, 300)
+    $("#note-content").delay(300).show("slide", {
+        direction: "up"
+    }, 300)
+    $("#note-val").val("1")
+}
+
+function removenote() {
+
+    $("#note-adder").delay(300).show("slide", {
+        direction: "up"
+    }, 300)
+    $("#note-content").hide("slide", {
+        direction: "up"
+    }, 300)
+    $("#note-val").val("0")
+    $("#note-area").val("")
+}
+
+function recollect() {
+
+    $.ajax({
+        url: "/get/page/generic/",
+        type: "GET",
+        success: function (result) {
+            $("#error").parent().fadeOut(100);
+            $("#generic-tr").html(result);
+        },
+        error: function () {
+            $("#generic-tr").html("")
+            $("#error").text("Error occured while accessing server. try refreshing the page").parent().fadeIn(200)
+        }
+    });
+}
+function proceed_call(a,b)
+{
+  $("#show-hide").fadeIn(100)
+  $.ajax({
+      url: "/get/page/confirm/?i="+$("#note-val").attr("data-int")+"&s="+$("#note-val").attr("data-sector")+"&a="+b+"&d="+$("#note-area").val()+"&c="+a,
+      type: "GET",
+      success: function (result) {
+        $("#show").html(result)
+        $("#show-hide").fadeOut(100)
+        recollect()
+          
+      },
+      error: function () {
+         alert("error")
+      }
+
+    });
+  
+}
+function delete_call(a)
+{
+  $("#show-hide").fadeIn(100)
+
+  $.ajax({
+      url: "/get/page/deletecall/?s="+$("#note-val").attr("data-sector")+"&d="+$("#note-area").val()+"&c="+a,
+      type: "GET",
+      success: function (result) {
+        $("#show").html(result)
+        $("#show-hide").fadeOut(100)
+        recollect()
+          
+      },
+      error: function () {
+         alert("error")
+         $("#show-hide").fadeOut(100)
+      }
+
+    });
+  
+}
+function pdelete(a)
+{
+   if ($("#note-val").val() == "1") {
+        if ($("#note-area").val().length < 1) {
+
+            $("#note-area").css({"border-color":"#f00","background-color":"#fce3e3"})
+        }
+        else
+        {
+          
+          $(a).val("Requesting...").removeClass("b-org").css("background-color", "#333");
+          delete_call(1)
+          
+        }
+    }else{
+
+      $(a).val("Requesting...").removeClass("b-org").css("background-color", "#333");
+      delete_call(0)
+      
+    }
+    return false
+}
+function proceed(a) {
+    if ($("#note-val").val() == "1") {
+        if ($("#note-area").val().length < 1) {
+
+            $("#note-area").css({"border-color":"#f00","background-color":"#fce3e3"})
+        }
+        else
+        {
+          
+          $(a).val("Requesting...").removeClass("b-org").css("background-color", "#333");
+          proceed_call(1,$("#gen-key").text())
+          
+        }
+    }else{
+
+      $(a).val("Requesting...").removeClass("b-org").css("background-color", "#333");
+      proceed_call(0,$("#gen-key").text())
+      
+    }
+    return false
+}
+function tareafocus(a)
+{
+   $(a).css({"border-color":"#ccc","background-color":"#fff"})
+ 
+}
+
+var _timer = 0
+
+
+    $(window).focus(function () {
+        
+        recollect()
+        
+        //window.clearInterval(_timer)
+
+        //_timer = setInterval(recollect, 60000)
+    });
+
+    $("body").click(function () {
+
+        $("#error").parent().fadeOut(100);
+
+    });
+
+    $(window).blur(function(){
+
+       // window.clearInterval(_timer)
+
+    });
+
+    $(window).load(function()
+    {
+      
+        
+       // _timer = setInterval(recollect, 60000)
+
+    });
+    
+
+</script>
+</body>
+</html>

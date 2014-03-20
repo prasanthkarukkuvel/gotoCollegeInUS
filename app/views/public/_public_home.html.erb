@@ -1,0 +1,255 @@
+ <div class="status-layout">
+    <div id="show-status">
+      <div>hhhhh</div>
+    </div>
+  </div>
+<div class="bd-cen-layout">
+  <div></div>
+
+  <div class="td-sign-lf" id="sign-div">
+    <div id="sign-up-layout" class="sign-up-cls">
+      <div class="sign-error-info" id="error-tag">Specify your firstname</div>
+      <%= form_for(:user, url:srand(5),:html => {id:"user_signup",multipart:true} ) do |f| %>
+      <div class="form-controls-signup">
+        <div class="names">
+          <div class="firstname" data-etop="57" data-eleft="5">
+            <%= f.text_field :firstname,placeholder: "Firstname" %>
+          </div>
+          <div class="lastname" data-etop="60" data-eleft="150">
+            <%= f.text_field :lastname,placeholder: "Lastname"%>
+          </div>
+        </div>
+        <div class="mail-contact" data-etop="110" data-eleft="5",>
+          <%= f.email_field :email,placeholder: "Email" %>
+        </div>
+        <div class="mail-contact" data-etop="160" data-eleft="5">
+          <%= f.text_field :contact,placeholder: "Mobile"  %>
+        </div>
+
+        <div class="dob-gender">
+          <div>Date of Birth</div>
+          <div class="for-dob">
+           <% 
+           day = 31.times.map {|i| i+1 }.insert(0,"DD")
+           month = 12.times.map {|i| i+1 }.insert(0,"MM")
+           year = 20.times.map {|i| (Time.now.year - 30)+i }.insert(0,"YYYY")
+           %>
+           <div data-etop="205" data-eleft="105"><%= f.select(:date, options_for_select(day,:selected => "DD")) %></div>
+           <div data-etop="205" data-eleft="165"><%= f.select(:month, options_for_select(month,:selected => "MM")) %></div>
+           <div data-etop="205" data-eleft="230"><%= f.select(:year, options_for_select(year,:selected => "YYYY")) %></div>
+         </div>
+       </div>
+       <div class="dob-gender">
+        <div>Gender</div>
+        <div class="for-gender" data-etop="250" data-eleft="110">
+          <%= f.select(:gender, options_for_select(["Select","Male","Female","Transgender"],:selected => "Select")) %>
+        </div>
+      </div>
+
+      <div class="sign-up-controls">
+        <input type="submit" class="org" value="Sign Up"/>
+        <input type="reset" class="blue" value="Clear" />
+      </div>
+      <% end %>
+    </div>
+
+    <div class="sign-title">
+      <p>it's free</p>
+      <p>Join with us</p>
+    </div>
+
+  </div>
+
+  <div id="sign-in-layout" class="log-in-cls">
+    <%= form_for(:session,url: "/u/home/l/",:html => { autocomplete: "off",id:"user_login"})  do |f| %>
+    <div class="pagelog-in-title">Login</div>
+    <div class="form-controls-login">
+      <div class="log-in-eu">Username</div>
+      <div class="mail-contact">
+        <%= f.text_field :username,placeholder: "",required: true %>
+      </div>
+      <div class="log-in-eu">Password</div>
+      <div class="mail-contact">
+        <%= f.password_field :password,placeholder: "" ,required: true%>
+      </div>
+      <div class="log-in-controls">
+        <input type="submit" class="org" value="Login"/>
+        <input type="reset" class="blue" value="Clear" />
+      </div>
+    </div>
+    <% end %>
+    <div class="sign-title">
+      <p>Let's</p>
+      <p>Begin to explore</p>
+    </div>
+  </div>
+
+</div>
+<div class="bd-bottom-index">
+  <div class="left-div-layout">
+    left layout
+  </div>
+  <div class="create-page-layout">
+
+   <a href="/create/page"><div class="create-page-button">Create a Page</div></a>
+   <div class="create-page-text">Create a Page for your College or Universities in 3 easy steps</div>
+   <div class="create-page-bottom"></div>
+
+ </div>
+</div>
+</div>
+<script>
+$(function(){
+
+  function showerr(a,b)
+  {
+    $(a).animate({"border-color":"#f00"},100);
+    $("#error-tag").fadeIn(200).text(b).animate({
+      "margin-top":$(a).parent().attr("data-etop"),
+      "margin-left":$(a).parent().attr("data-eleft")
+    });
+
+  }
+  function process(a)
+  {
+    if(a=="100")
+    {
+     showerr($("#user_email"),"Email ID already exists")
+   }
+   else if(a=="101")
+   {
+     showerr($("#user_contact"),"Mobile number already exists")
+   }
+   else if(a=="f101")
+   {
+     showerr($("#user_firstname"),"Invalid firstname")
+   }
+   else
+   {
+    alert(a)
+  }
+}
+function send(a,b)
+{
+  $("#bg-cover").fadeIn(100)
+
+  return false
+
+  $.ajax({
+    url: b,
+    type: "GET",
+    data: a.serialize(),
+    success: function (result) {
+      process(result)
+    },
+    error: function () {
+      alert("error")
+    }
+  });
+
+}
+
+$("#user_signup input").keypress(function(){
+
+  $(this).animate({"border-color":"#000"},100);
+  $("#error-tag").fadeOut(100)
+
+});
+$("#user_signup select").change(function(){
+
+  $(this).animate({"border-color":"#000"},100);
+  $("#error-tag").fadeOut(100)
+
+});
+
+var dcheck = function (a) {
+
+
+  var b = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(a),
+  c = function (m, d, y) {
+    return m > 0 && m < 13 && y > 0 && y < 32768 && d > 0 && d <= (new Date(y, m, 0)).getDate();
+  };
+
+  return b && c(b[1], b[2], b[3]);
+}
+
+$("#user_signup").submit(function(){
+
+  if( $("#user_firstname").val().length < 1)
+  { 
+      //showerr($("#user_firstname"),"You should have a good firstname")
+      showerr($("#user_firstname"),"Specify your firstname")
+    }
+    else if( $("#user_firstname").val().length < 3)
+    { 
+      //showerr($("#user_firstname"),"You should have a good firstname")
+      showerr($("#user_firstname"),"Required minimum 3 characters")
+    }
+    else if( $("#user_lastname").val().length < 1)
+    { 
+     showerr($("#user_lastname"),"Specify your lastname")
+       //showerr($("#user_lastname"),"Why not lastname ?")
+     }
+
+     else if( $("#user_email").val().length < 1)
+     { 
+       showerr($("#user_email"),"Specify email id")
+     }
+     else if(!ise($("#user_email").val()))
+     { 
+       showerr($("#user_email"),"It's seems invaild email id")
+     }
+     else if( $("#user_contact").val().length < 1)
+     {  
+      showerr($("#user_contact"),"Specify your mobile number")
+    }
+    else if( $("#user_contact").val().length < 10)
+    { 
+      showerr($("#user_contact"),"Invalid mobile number")
+    }
+    else if( $("#user_date :selected").val()=="DD")
+    { 
+      showerr($("#user_date"),"Select date")
+    }
+    else if( $("#user_month :selected").val()=="MM")
+    { 
+      showerr($("#user_month"),"Select month")
+    }
+    else if( $("#user_year :selected").val()=="YYYY")
+    { 
+      showerr($("#user_year"),"Select year")
+    }
+    else if(!dcheck($("#user_month :selected").val()+"/"+$("#user_date :selected").val()+"/"+$("#user_year :selected").val()))
+    { 
+      showerr($("#user_date"),"Invalid date selection")
+    }
+    else if( $("#user_gender :selected").val()=="Select")
+    { 
+      showerr($("#user_gender"),"Select gender")
+    }
+    else
+    { 
+      send($(this),"/u/"+$("#user_signup").attr("action")+"/c/")  
+    }
+
+    return false
+  })
+});
+$(function () {
+  $("#flip-login-sign").bind("click",true,signpage);
+  function signpage() {
+    if ($("#flip-login-sign").text() == "Login") {
+      $("#flip-login-sign").text("Sign Up");
+      $('#sign-div').removeClass("unflip").addClass("flip");
+      $(".log-in-cls").delay(100).fadeIn(1000);
+      $(".sign-up-cls").fadeOut(100);
+    }
+    else if ($("#flip-login-sign").text() == "Sign Up") {
+      $("#flip-login-sign").text("Login");
+      $('#sign-div').removeClass("flip").addClass("unflip");
+      $(".log-in-cls").fadeOut(100);
+      $(".sign-up-cls").delay(100).fadeIn(1000);
+    }
+  }
+});
+</script>

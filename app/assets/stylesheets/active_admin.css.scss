@@ -1,0 +1,74 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// Overriding any non-variable SASS must be done after the fact.
+// For example, to change the default status-tag color:
+body.active_admin #header a, body.active_admin #header a:link{color:#fff !important; font-size:15px !important;}
+ body.active_admin {
+      .status_tag {  }
+      #header{background: #a90329; /* Old browsers */
+background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+color:#fff; padding:15px;}
+
+  li.current > a{
+	background: #050504 !important;
+background: -moz-linear-gradient(top,  #050504 0%, #2d1207 100%) !important;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#050504), color-stop(100%,#2d1207)) !important;
+background: -webkit-linear-gradient(top,  #050504 0%,#2d1207 100%) !important;
+background: -o-linear-gradient(top,  #050504 0%,#2d1207 100%) !important;
+background: -ms-linear-gradient(top,  #050504 0%,#2d1207 100%) !important;
+background: linear-gradient(to bottom,  #050504 0%,#2d1207 100%) !important;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050504', endColorstr='#2d1207',GradientType=0 ) !important;
+color:#fff
+}
+   }
+   body.active_admin #header #utility_nav{ color:#f7a5b7}
+body.active_admin #header h1{font-size:25px;  position:relative; bottom:7px;color:#fff !important}
+// Notice that Active Admin CSS rules are nested within a
+// 'body.active_admin' selector to prevent conflicts with
+// other pages in the app. It is best to wrap your changes in a 
+// namespace so they are properly recognized. You have options
+// if you e.g. want different styles for different namespaces:
+//
+// .active_admin       applies to any Active Admin namespace
+// .admin_namespace    applies to the admin namespace (eg: /admin)
+// .other_namespace    applies to a custom namespace named other (eg: /other)
+#footer{display:none !important;}
+body.active_admin #title_bar{background: #565656;
+background: -moz-linear-gradient(top,  #565656 0%, #000000 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565656), color-stop(100%,#000000));
+background: -webkit-linear-gradient(top,  #565656 0%,#000000 100%);
+background: -o-linear-gradient(top,  #565656 0%,#000000 100%);
+background: -ms-linear-gradient(top,  #565656 0%,#000000 100%);
+background: linear-gradient(to bottom,  #565656 0%,#000000 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#565656', endColorstr='#000000',GradientType=0 );
+border:#333 thin solid;
+
+}
+#page_title{color:#ea2752 !important; text-shadow: 2px 1px 1px #000 !important}
+body.active_admin .breadcrumb a, body.active_admin .breadcrumb a:link, body.active_admin .breadcrumb a:visited, body.active_admin .breadcrumb a:active{color:#fff !important; text-shadow: 2px 1px 1px #000 !important}
+body.active_admin table.index{background: #a9e4f7;
+background: -moz-linear-gradient(top,  #a9e4f7 0%, #0fb4e7 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9e4f7), color-stop(100%,#0fb4e7));
+background: -webkit-linear-gradient(top,  #a9e4f7 0%,#0fb4e7 100%);
+background: -o-linear-gradient(top,  #a9e4f7 0%,#0fb4e7 100%);
+background: -ms-linear-gradient(top,  #a9e4f7 0%,#0fb4e7 100%);
+background: linear-gradient(to bottom,  #a9e4f7 0%,#0fb4e7 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7',GradientType=0 );
+}

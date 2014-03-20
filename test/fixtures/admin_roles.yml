@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  handle_page_request: false
+  can_delete_user: false
+  is_active: false
+  show_all_details: false
+  admin_user_id: 1
+
+two:
+  handle_page_request: false
+  can_delete_user: false
+  is_active: false
+  show_all_details: false
+  admin_user_id: 1

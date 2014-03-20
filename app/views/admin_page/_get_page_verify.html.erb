@@ -1,0 +1,22 @@
+<div class="show-title">Page Verification Process <span>| <%= @set[:admin].email %></span><p id="cshw" class="b-org" onclick="cshow()">x</p></div>
+<div class="show-confirmation">
+  <div class="confirmation-title">Confirmation</div>
+  <div class="confirmation-content">
+    <div class="content-info">
+      <p>Before sending confirmation mail please make sure that the submitted informations are valid and enough for future communications</p>
+      <ul>
+        <li id="note-adder"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+        <li id="note-content"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"></textarea><div onclick="removenote()">Cancel</div></li>
+      </ul>
+      <ul class="key-cls">
+        <li class="key-title">App Key</li>
+        <li class="key-content" id="gen-key"><%= @set[:key] %></li>
+      </ul>
+      <p></p>
+      <div class="confirm-controls">
+        <input type="submit"  value="Proceed" class="b-org" onclick="proceed(this)" />
+        <input type="hidden" id="note-val"  data-int="<%= @set[:key].gsub(/-/,"") %>" data-sector="<%= @set[:t] %>" value="0" />
+      </div>
+    </div>
+  </div>
+</div>

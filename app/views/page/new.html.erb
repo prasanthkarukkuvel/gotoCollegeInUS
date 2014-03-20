@@ -1,0 +1,266 @@
+<%= form_for(:page,url:"/p/"+srand(5)+"/c/",:html => {id:"page_create_new"} ) do |f| %>
+    <div class="page-create">
+      <div class="step-holder">
+      <div class="steping">Step <span>1</span></div>
+    </div>
+      <div class="page-admin">
+      <div class="page-title-d"> Page admin info </div>
+      <% 
+        admin = %w(name contact)
+        a_place = %w(Name Contact)
+        page = %w(ctitle code web addr1 addr2)
+        page_s = %w(city state)
+        page_t = %w(pin fax)
+        p_place = ["Page Name","Page Code","Website","Address Line 1","Address Line 2"]
+        state = ["Select State","Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","D.C.","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Mexico","New York","New Jersey","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+        city = ["Select City","Abbeville","Aberdeen","Abilene","Akron","Albany","Alexandria","Allentown","Amarillo","Anaheim, CA ","Anchorage ","Anderson ","Annapolis","Ann Arbor ","Anniston","Arlington","Asheville","Ashland","Astoria","Athens","Atlanta","Atlantic","Augusta","Austin","Bakersfield, CA","Baltimore","Bangor","Baton Rouge","Bellevue","Bellingham","Bend","Bethesda","Billings","Biloxi","Bismarck","Bloomfield","Bloomington","Boise","Boston","Bowling Green","Bozeman","Bremerton","Bridgeport","Brunswick","Buffalo","Burlington","Caldwell","Cambridge","Camden","Canton","Cedar City","Chandler","Chapel Hill ","Charleston ","Charlotte ","Cheyenne","Chicago ","Cincinnati","Claymont","Clearfield","Clearwater","Cleveland","Cody","Columbia","columbus","Concord","Cumberland","Dallas","Dayton","Dayton,Ohio","Denver","Desmoines","Detroit","Douglas","Duluth","Durham","Eau Claire","Elizabeth","Escondido, CA","Essex","Erie","Evansville","Everett","Exeter","Fairbanks","Fargo","Fayetteville","Fayetteville,AR","Flagstaff","Flint","Florence","Fort Lauderdale","Fort Pierce","Fort Wayne","Frederick","Free Port","Fontana, CA ","Fresno, CA ","Galveston ","Gastonia ","Glendale","Goleta, CA ","Green Bay ","Greenville","Greenwich ","Hamilton ","Hartford ","Harrisburg","Hastings ","Hattiesburg ","Hawthorne ","Helena ","Henderson ","Honolulu ","Hot Springs ","Houston","Indianapolis","Iowa City","Jacksonville","Jamestown","Jersey City","Johnson City","Junction","Kennewick","Kenosha","Key West","Kissimmee","Kodiak","Knoxville","Laconia","Lafayette","Lakewood","Lansing","Lancaster","Las Vegas","Laughlin","Lawrence","Lincoln","Littleton","Lompoc, CA","Long Beach, CA ","Long Branch ","Los Angeles, CA ","Lubbock ","Macon ","Madison ","Martinsburg ","Memphis","Mesquite ","Miami","Middlebury","Middletown","Milford","Millville","Milwaukee","Minneapolis","Missoula","Modesto, CA","Monroe","Montgomery","Morgantown","Myrtle Beach","Nampa","Nashua","Nashville","Newark","New Brunswick ","New Orleans","New Port","New York","Oakland, CA","Oceanside, CA","Olympia","Omaha","Ottawa","Overton","Pahrump","Palm Springs, CA","Palmer","Panama","Park City","Paterson","Pawtucket","Pensacola","Peoria","Philadelphia","Phoenix","Pittsburgh","Plainfield","Plymouth","Pocatello","Portland","Prescott","Princeton","Providence","Quincy","Racine","Raleigh","Redmond","Reno","Richland","Richmond","Riverside, CA","Rochester","Rockford","Russellville","Sacramento, CA","Salt Lake City","San Angelo","San Antonio","San Diego, CA ","San Francisco, CA ","San Jose, CA","Santa Babara, CA","Savannah ","Santa Monica CA","Scranton","Seattle","Shelbyville","Shreveport","Sioux Falls","Solvang, CA","Spartanburg","Spokane","Springfield","Springfield,MO","St.Louis","Stamford","Stockton, CA","Tacoma","Texarkana","Toledo","Trenton","Tucson","Tulsa","Valdosta","Vicksburg","Villas","Vineland","Washington, DC","Waterloo","Weatherford","Wenatchee","windsor","Walla Walla","Woonsocket","Yakima","Yankton","Youngstown","Yuma",]
+      %>
+        
+        <% admin.length.times do |i| %>
+
+          <%= f.text_field admin[i].to_sym,placeholder: a_place[i] %>
+
+        <% end %>
+
+        <%= f.email_field :email ,placeholder:"Email"%>
+        <select id="page_type" name="page[type]">
+          <option value="-1" selected="selected">Select Page Type</option>
+          <option value="1">College</option>
+          <option value="2">University</option>
+        </select>
+        
+
+        
+      </div>
+      <div class="college-info">
+      <div class="page-title-d" id="change-info-title"> Page information </div>
+        
+      <% page.length.times do |i| %>
+
+          <%= f.text_field page[i].to_sym,placeholder: p_place[i] %>
+
+      <% end %>
+
+      <%= f.select(:state, options_for_select(state,:selected => "Select State")) %>
+      <%= f.select(:city, options_for_select(city,:selected => "Select City")) %>
+      
+      <%= f.text_field :pin ,placeholder:"Pincode"%>
+      <%= f.text_field :fax ,placeholder:"Fax"%>
+
+
+      </div>
+      <div style="width:700px;margin:0px auto 0 auto;height:30px">
+        <div class="error-display" id="id-error-display"> Minimum 6 characters </div>
+      </div>
+      <div class="page-create-controls">
+        
+        <input type="submit" class="org" value="Submit"/>
+        <input type="reset" class="blue" value="Clear" />
+      </div>
+    </div>
+<% end %>
+<script>
+$(function(){
+  $("#page_type").change(function(){
+
+    if($("#page_type :selected").text()!="Select Page Type")
+    {
+      $("#change-info-title").text($("#page_type :selected").text()+" information");
+      $("#page_ctitle").attr("placeholder",($("#page_type :selected").text()+" Name"));
+      $("#page_code").attr("placeholder",($("#page_type :selected").text()+" Code"));
+    }
+    else
+    {
+      $("#change-info-title").text("Page information");
+       $("#page_ctitle").attr("placeholder","Page Name");
+      $("#page_code").attr("placeholder","Page Code");
+
+    }
+
+  });
+});
+
+
+$("#page_create_new input[type=text],#page_create_new input[type=email]").on({
+  keydown: function(e) {
+    if($(this).attr("placeholder")=="Contact" || $(this).attr("placeholder")=="Pincode" || $(this).attr("placeholder")=="Email"  ||$(this).attr("placeholder")=="Name")
+      if (e.which === 32)
+        return false;
+  },
+  change: function() {
+
+  if($(this).attr("placeholder")=="Contact")
+  {
+    $(this).val($(this).val().replace(/[^0-9+-]/g, ""))
+  }
+  else if($(this).attr("placeholder")=="Pincode")
+  {
+    $(this).val($(this).val().replace(/[^0-9-]/g, ""))
+  }
+  else if($(this).attr("placeholder")=="Email")
+  {
+    $(this).val($(this).val().replace(/[^0-9_@.a-zA-Z]/g, ""))
+  }
+  else if($(this).attr("placeholder")=="Name")
+  {
+    $(this).val($(this).val().replace(/[^a-zA-Z]/g, ""))
+  }
+
+  }
+});
+
+$("#page_create_new input[type=text],#page_create_new input[type=email]").keyup(function (e) {
+
+  
+
+ 
+  
+    
+});
+$("#page_create_new input").focus(function () {
+
+  $("#id-error-display").fadeOut(200)
+    
+});
+
+
+function iwe(m)
+{
+  var re = /^www[.][a-z0-9]{1,15}[.][a-z0-9.]{2,}$/;
+  if (re.test(m)) return true;
+  return false;
+
+}
+
+$("#page_create_new").submit(function(){
+
+
+  var a = 0
+
+  $("#page_create_new input[type=text],#page_create_new input[type=email],#page_create_new select").each(function(i,e){
+
+    
+      if($(e).val()=="" && $(e).attr("placeholder")!="Address Line 2")
+      { 
+          a = 1
+          $("#id-error-display").text("You can't leave "+$(e).attr("placeholder")+" as empty").fadeIn(200).css("display","inline-block").css("display","inline-block");
+          return false        
+      }
+      else
+      {
+        if($(e).attr("placeholder")=="Name")
+        {
+           if($(e).val().length < 3)
+           {
+             a = 1
+             $("#id-error-display").text("Name should have atleast 3 characters").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        } 
+        else if($(e).attr("placeholder")=="Contact")
+        {
+           if($(e).val().length < 6)
+           {
+             a = 1
+             $("#id-error-display").text("Contact should have atleast 6 numbers").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if($(e).attr("placeholder")=="Email")
+        {
+           if(!ise($(e).val()))
+           {
+             a = 1
+             $("#id-error-display").text("Invalid Email ID").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if ($(e).attr("id")=="page_type")
+        {
+          if($("#page_type :selected").text()=="Select Page Type")
+          {
+            a = 1
+            $("#id-error-display").text("Select Page Type").fadeIn(200).css("display","inline-block"); 
+              return false
+
+          }
+        }
+        else if($(e).attr("placeholder")=="College Name" || $(e).attr("placeholder")=="University Name")
+        {
+           if($(e).val().length < 5)
+           {
+             a = 1
+             $("#id-error-display").text($(e).attr("placeholder")+" Name should have atleast 5 characters").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if($(e).attr("placeholder")=="College Code" || $(e).attr("placeholder")=="University Code")
+        {
+           if($(e).val().length < 4)
+           {
+             a = 1
+             $("#id-error-display").text($(e).attr("placeholder")+" Code should have atleast 5 characters").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if($(e).attr("placeholder")=="Website")
+        {
+           if(!iwe($(e).val()))
+           {
+             a = 1
+             $("#id-error-display").text("Invalid Website Address").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if ($(e).attr("id")=="page_state")
+        {
+          if($("#page_state :selected").text()=="Select State")
+          {
+            a = 1
+            $("#id-error-display").text("Select State").fadeIn(200).css("display","inline-block"); 
+              return false
+
+          }
+        }
+        else if ($(e).attr("id")=="page_city")
+        {
+          if($("#page_city :selected").text()=="Select City")
+          {
+            a = 1
+            $("#id-error-display").text("Select City").fadeIn(200).css("display","inline-block"); 
+              return false
+
+          }
+        }
+        else if($(e).attr("placeholder")=="Pincode")
+        {
+           if($(e).val().length < 5)
+           {
+             a = 1
+             $("#id-error-display").text("Invalid Pincode").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        }
+        else if($(e).attr("placeholder")=="Fax")
+        {
+           if($(e).val().length < 8)
+           {
+             a = 1
+             $("#id-error-display").text("Invalid FAX Numbers").fadeIn(200).css("display","inline-block"); 
+              return false 
+           }
+        } 
+      }
+
+
+  });
+  
+  if(a==1)
+    return false
+  else
+    return true
+  
+
+});
+
+</script>

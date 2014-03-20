@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gotocollegeinus</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <div class="db-section" id="bg-cover"></div>
+  <div class="bd-top">
+    <div class="top">
+
+        <div class="title"><a href="/"></a></div>
+      
+      <div class="search">
+        <input placeholder="Search Colleges, Unversities, Events, Articles etc." type="text" class="search" id="search-text"/>
+        <div id="search-result">
+
+
+        </div>
+      </div>
+      <% if request.fullpath.split("/")[1]=="activate" || request.fullpath.split("/")[1]=="login" || request.fullpath.split("/")[1]=="create" %>
+      <div></div>
+      <% else %>
+      <% if session[:sign] ==  "true" %>
+      <div>
+        <%= User.find_by_slug(session[:key]).firstname %>
+        <%= link_to "Logout",logout_path %>
+      </div>
+      <% else %>
+      <div class="sign-holder">
+        <div class="sign-layout org" id="flip-login-sign">Login</div>
+      </div>
+      <% end %>
+      <% end %>
+      <div class="navigation">
+        <div class="nav-wrap">
+          <ul class="group" id="example-one">
+            <li class="current_page_item"><a href="#">Home</a></li>
+            <li><a href="#">Colleges</a></li>
+            <li><a href="#">Universities</a></li>
+            <li><a href="#">Professors</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Top Rated</a></li>
+            <li><a href="#">Forum</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bd-body-layout">
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+     <%= yield %>
+
+   </div>
+ </div>
+
+ <script type="text/javascript">
+ $(function() {
+
+  $("#search-text").keyup(function() {
+
+    if($(this).val().length >= 1) {
+
+      $.ajax({
+        url: "/search/index/?query="+$(this).val(),
+        type: "GET",
+        success: function(result) {
+          $("#search-result").html(result).show("slide", { direction: "up" }, 500);
+        },
+        error: function() {
+          alert("error");
+        }
+      });
+    }
+    else
+    {
+     $("#search-result").hide("slide", { direction: "up" }, 500);
+   }
+ });
+});
+ </script>
+
+</body>
+</html>

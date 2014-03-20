@@ -1,0 +1,13 @@
+<div class="show-title"><%= @set[:info].title %><span> | <%= @set[:admin].name %></span><p class="b-org" onclick="cshow()">x</p></div>
+<div>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr><td><div>Admin Email</div></td><td><div><%= @set[:admin].email %></div></td></tr>
+    <tr><td><div>Contact</div></td><td><div><%= @set[:admin].contact %></div></td></tr>
+    <tr><td><div>Website</div></td><td><div><a href=<%= "http://#{@set[:info].website}" %> target="new"><%= @set[:info].website %></a></div></td></tr>
+    <tr><td><div>Address</div></td><td><div><%= "#{@set[:info].address1} #{@set[:info].address2}" %></div></td></tr>
+    <tr><td><div>State</div></td><td><div><%= @set[:info].state %></div></td></tr>
+    <tr><td><div>City</div></td><td><div><%= @set[:info].city %></div></td></tr>
+    <tr><td><div>Pincode</div></td><td><div><%= @set[:info].pincode %></div></td></tr>
+    <tr><td><div>Fax</div></td><td><div><%= @set[:info].fax %></div></td></tr>
+  </table>
+</div>

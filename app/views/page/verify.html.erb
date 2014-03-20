@@ -1,0 +1,105 @@
+<div class="cls-page-create">
+
+  <div class="step-holder">
+    <div class="steping">Step <span>2</span></div>
+  </div>
+  
+  <div class="page-create-title">Page verification process</div>
+  <%= form_for :verify,url:srand(5),html:{id:"verfiy_form",autocomplete:"off"} do |f| %>
+  <div class="creation">
+    <div class="text">Enter your Appkey</div>
+    <div>
+      <%= f.text_field :appkey,value:"bba69-a3f60-bc735-f58e0" %>
+      <div class="error-tag" id="error-appkey">Specify your App Key</div>
+    </div>
+
+    <div class="text">Enter your Email</div>
+    <div>
+      <%= f.text_field :email,value:"prasanth.msec@gmail.com" %>
+      <div class="error-tag" id="error-email">Specify your email id</div>
+    </div>
+    <div class="controls">
+      <input type="submit" class="org" value="Next" />
+    </div>
+  </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+
+$(function(){
+
+
+  function process(a){
+    if(a=="100")
+      serr($("#error-appkey"),"You have entered an invalid Appkey")
+    else if(a=="101")
+      serr($("#error-email"),"You have entered an invalid email id")
+    else
+      window.location.href="/activate/page/"+a.split("/")[1]
+  }
+
+  function next(a,b){
+
+   $.ajax({
+    url: b,
+    type: "GET",
+    data: a.serialize(),
+    success: function (result) {
+      process(result)
+    },
+    error: function () {
+      alert("error")
+    }
+  });
+ }
+
+ function serr(a,b)
+ {
+
+  $(a).text(b).show("drop",{"direction":"up"})
+}
+
+$("#verfiy_form input").change(function(){
+
+  $("#error-"+$(this).attr("id").split("_")[1]).hide("drop",{"direction":"up"})
+  $("#verfiy_email").val($(this).val().replace(/[^0-9_@.-a-zA-Z]/g, ""))
+
+})
+$("#verfiy_form input").keypress(function(){
+
+  $("#error-"+$(this).attr("id").split("_")[1]).hide("drop",{"direction":"up"})
+
+})
+
+$("#verfiy_form").submit(function(){
+
+  var b = $("#verify_appkey").val().match(/^[a-f0-9]{5}-[a-f0-9]{5}-[a-f0-9]{5}-[a-f0-9]{5}$/);
+
+  if($("#verify_appkey").val().length<1)
+  {
+    serr($("#error-appkey"),"Specify your Appkey")
+  }
+  else if(!b)
+  {
+    serr($("#error-appkey"),"Specified Appkey is not vaild")
+  }
+  else if($("#verify_email").val().length<1)
+  {
+    serr($("#error-email"),"Specify your email id")
+  }
+  else if(!ise($("#verify_email").val()))
+  {
+    serr($("#error-email"),"Specified email id is not vaild")
+  }
+  else
+  {
+    next($(this),"/page/activate")
+  }
+
+
+  return false
+
+});
+
+});
+</script>

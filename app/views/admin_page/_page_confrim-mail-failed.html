@@ -1,0 +1,40 @@
+<div class="show-title">Page Verification Process <span>| <%= @set[:admin].email %></span><p id="cshw" class="b-org" onclick="cshow()">x</p></div>
+<div class="show-confirmation">
+  <div class="confirmation-title" style="color:#f00">Confirmation Successful, but mail sending failed</div>
+  <div class="confirmation-content">
+    <div class="content-info">
+
+      <div style="padding:10px 5px 5px 5px; line-height:23px; width:700px;margin-left:40px; text-align:justify">An unexpected error occured while sending mail to the corresponding Page Admin. Try resending the request or send a report to super admin.</div>
+      
+      <ul>
+        <% if @set[:d] == "show" %>
+        <li id="note-adder" style="display:none"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+
+        <li id="note-content" style="display:block"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"><%= @set[:n] %></textarea><div onclick="removenote()">Cancel</div></li>
+
+        <% else %>
+
+        <li id="note-adder"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+
+        <li id="note-content"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"></textarea><div onclick="removenote()">Cancle</div></li>
+
+
+        <% end %>
+
+      </ul>
+      <ul class="key-cls">
+        <li class="key-title">App Key</li>
+        <li class="key-content" id="gen-key"><%= @set[:key] %></li>
+      </ul>
+      <p></p>
+      <div class="confirm-controls" style="position:relative;bottom:15px">
+        <input type="submit"  value="Resend Request" class="b-org" onclick="proceed(this)" />
+        <% if @set[:d] == "show" %>
+           <input type="hidden" id="note-val"  data-int="<%= @set[:key].gsub(/-/,"") %>" data-sector="<%= @set[:t] %>" value="1" />
+        <% else %>
+           <input type="hidden" id="note-val"  data-int="<%= @set[:key].gsub(/-/,"") %>" data-sector="<%= @set[:t] %>" value="0" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="show-title">Page Deletion Process <span>| <%= @set[:admin].email %></span><p id="cshw" class="b-org" onclick="cshow()">x</p></div>
+<div class="show-confirmation">
+  <div class="confirmation-title">Confirmation</div>
+  <div class="confirmation-content">
+    <div class="content-info">
+      <p>This process deletes all the information submitted by the Page admins. A notification mail will be sent to the corresponding Page Admin. You can also add a note along with the mail.</p>
+      <ul>
+        <li id="note-adder"><div class="b-org" id="note" onclick="addnote()">Add a note</div><span>this note will be sent along with the confirmation email</span></li>
+        <li id="note-content"><textarea id="note-area" onfocus="tareafocus(this)" placeholder=" write your note here"></textarea><div onclick="removenote()">Cancel</div></li>
+      </ul>
+     
+      <p></p>
+      <div class="confirm-controls">
+        <input type="submit"  value="Delete" class="b-org" onclick="pdelete(this)" />
+        <input type="hidden" id="note-val"  data-sector="<%= @set[:t] %>" value="0" />
+      </div>
+    </div>
+  </div>
+</div>

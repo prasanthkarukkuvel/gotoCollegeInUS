@@ -1,0 +1,17 @@
+<div class="search-dense">
+  <div class="search-part-container">
+    <div class="search-part-title">Users</div>
+    <% for u in user %>
+      <div class="search-part">
+       <div class="search-picture"><%= image_tag u.photo.url(:thumb) %></div>
+       <div class="search-container">
+          <div class="search-result-title"><%= u.firstname+" "+u.lastname %></div>
+          <div class="search-result-container">
+             <div class="search-result-text">Subcribed : 30</div>
+             <div class="search-result-text">Following : 20</div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

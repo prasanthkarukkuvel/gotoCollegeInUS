@@ -1,0 +1,328 @@
+<div class="user-face">
+	<div class="user-layout">
+		<div class="note-area">
+		</div>
+		<div class="post-area">
+			<div class="post-navigate">
+				<ul>
+					<li><a href="#">News Feeds</a></li>
+					<li><a href="#">Subscribed</a></li>
+					<li><a href="#">Following</a></li>
+					<li><a href="#">Intersets</a></li>
+					<li><a href="#">Favorites</a></li>
+				</ul>
+			</div>
+			<div class="post-w-layout">
+				<div class="n-post-area">
+					<div class="scroll-area">
+						<div class="post-layout">
+							<ul class="post-list">
+								<li class="post-list-section">
+									<div class="post-list-part">
+										<div class="post-div">
+											<div class="photo-frame">
+												<div class="photo"><%= image_tag User.find_by_username("prasanth").photo.url(:small) %></div>
+											</div>
+											<div class="header">
+												<div class="name-layout">
+													<div class="name"><a href="#">Prasanth</a><span> likes his own </span><a href="#"> photo</a></div>
+													<div class="close">
+														<div class="post-close">x</div>
+													</div>
+												</div>
+												<div class="status">24 minutes ago</div>
+											</div>
+										</div>
+										<div class="post-content">
+											<div class="side-layout"></div>
+											<div class="body-header">
+												<div class="text-pic-holder">
+													<div class="text-header">My pic</div>
+													<div class="pic-header"><%= image_tag User.find_by_username("prasantht").photo.url(:original) %></div>
+
+
+												</div>
+												<div class="comment-header"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="n-subscribe-area">
+					<div class="subscribe-layout">
+						<div class="subscribe-title">Subscribed</div>
+						<div class="list-subscribed">
+							<div class="list-subscribed-section" data-section="aaaa">
+								<div class="thumb-area"><%= image_tag User.find_by_username("prasantht").photo.url(:medium) %></div>
+								<div class="text-area">
+									<div><a href="#">Meenakshi Sundararajan Engineering College</a></div>
+									<div class="info-area" id="aaaa-info-first">
+										<div class="info-text">
+											<div class="info-status">Stanford street, Extension. Added 2 years ago</div>
+										</div>
+										<div class="info-feature">
+											<div class="">100 Subscribers</div>
+											<div class="">4.5 Ratings</div>
+										</div>
+
+									</div>
+									<div class="info-area" id="aaaa-info-second">
+										<div class="info-links">
+											<ul>
+												<li><a href="#">00 Departments</a></li>
+												<li><a href="#">00 Courses</a></li>
+												<li><a href="#">00 Awards</a></li>
+												<li><a href="#">00 Achivements</a></li>
+												<li><a href="#">00 Reviews</a></li>
+												<li><a href="#">00 Professors</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="list-subscribed-section" data-section="bbbb">
+								<div class="thumb-area"><%= image_tag User.find_by_username("jagdeesh").photo.url(:medium) %></div>
+								<div class="text-area">
+									<div><a href="#">Meenakshi Sundararajan Engineering College</a></div>
+									<div class="info-area" id="bbbb-info-first">
+										<div class="info-text">
+											<div class="info-status">Stanford street, Extension. Added 2 years ago</div>
+										</div>
+										<div class="info-feature">
+											<div class="">100 Subscribers</div>
+											<div class="">4.5 Ratings</div>
+										</div>
+
+									</div>
+									<div class="info-area" id="bbbb-info-second">
+										<div class="info-links">
+											<ul>
+												<li><a href="#">00 Departments</a></li>
+												<li><a href="#">00 Courses</a></li>
+												<li><a href="#">00 Awards</a></li>
+												<li><a href="#">00 Achivements</a></li>
+												<li><a href="#">00 Reviews</a></li>
+												<li><a href="#">00 Professors</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="n-follow-area">
+					<div class="follow-layout">
+						<div class="follow-title">Following</div>
+						<div class="list-followed">
+							<div class="list-follow-section" data-section="aaaa">
+								<div class="thumb-area"><%= image_tag User.find_by_username("prasantht").photo.url(:medium) %></div>
+								<div class="text-area">
+									<div><a href="#">Prasanth Kandhasamy</a></div>
+									<div class="info-area" id="aaaa-follow-first">
+										<div class="info-text">
+											<div class="info-status">Stanford University. Added 2 years ago</div>
+										</div>
+										<div class="info-feature">
+											<div class="">100 Followers</div>
+											<div class="">4.5 Points</div>
+										</div>
+
+									</div>
+									<div class="info-area" id="aaaa-follow-second">
+										<div class="info-links">
+											<ul>
+												<li><a href="#">00 Articles</a></li>
+												<li><a href="#">00 Reviews</a></li>
+												<li><a href="#">00 Posts</a></li>
+												<li><a href="#">00 Course Reviews</a></li>
+												<li><a href="#">00 Answers</a></li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="n-review-area"></div>
+				<div class="n-favorite-premium-area"></div>
+			</div>
+		</div>
+		<div class="event-area">
+			<div class="event-first">
+				<div class="upgrade">Upgrade Premium</div>
+				<div class="edit-profile">Edit Profile</div>
+			</div>
+			<div class="event-second">
+				<div class="top-rated" onmouseover="showin('rate')" onmouseout="showout('rate')">
+					<div class="rate-title">
+						<div class="rate-selected">Colleges</div>
+						<div class="rate-select">Top Universities</div>
+					</div>
+					<div class="rate-content" >
+						<div>
+							<ul>
+								<li><a href="#">
+									<div class="updates-layout">
+										<div class="thumb-img"><%= image_tag User.find_by_username("prasanth").photo.url(:small) %></div>
+										<div class="updates-sidelayout">
+											<div class="name-area">Meenakshi Sundararajan</div>
+											<div class="subscribe-area">
+												<div class="subscribe-div">100 Subscribers</div>
+												<div></div>
+											</div>
+										</div>
+									</div><a>
+								</li>
+								<li><a href="#">
+									<div class="updates-layout">
+										<div class="thumb-img"><%= image_tag User.find_by_username("shankari").photo.url(:small) %></div>
+										<div class="updates-sidelayout">
+											<div class="name-area">Meenakshi Sundararajan</div>
+											<div class="subscribe-area">
+												<div class="subscribe-div">100 Subscribers</div>
+												<div></div>
+											</div>
+										</div>
+									</div><a>
+								</li>
+								<li><a href="#">
+									<div class="updates-layout">
+										<div class="thumb-img"><%= image_tag User.find_by_username("jagdeesh").photo.url(:small) %></div>
+										<div class="updates-sidelayout">
+											<div class="name-area">Meenakshi Sundararajan</div>
+											<div class="subscribe-area">
+												<div class="subscribe-div">100 Subscribers</div>
+												<div></div>
+											</div>
+										</div>
+									</div><a>
+								</li>
+								<li><a href="#">
+									<div class="updates-layout">
+										<div class="thumb-img"><%= image_tag User.find_by_username("imran").photo.url(:small) %></div>
+										<div class="updates-sidelayout">
+											<div class="name-area">Meenakshi Sundararajan</div>
+											<div class="subscribe-area">
+												<div class="subscribe-div">100 Subscribers</div>
+												<div></div>
+											</div>
+										</div>
+									</div><a>
+								</li>
+								
+							</ul>
+							<div class="show-layout">
+								<a href="#"><div class="showall" id="rate-show-all">Show All</div></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="trends">
+					<div class="trends-layout" onmouseover="showin('trend')" onmouseout="showout('trend')">
+						<div class="trend-title">
+							<div class="title">Upcoming Events</div>
+							<div id="trends-next"></div>
+						</div>
+						<div class="trends-part">
+							<ul>
+								<li class="part-layout"><a href="#">
+									<div class="trends-part-section">
+										<div><%= image_tag User.find_by_username("shakeer").photo.url(:small) %></div>
+										<div>
+											<div>Events getting on</div>
+											<div>Feb 28,2013</div>
+										</div>
+									</div></a>
+								</li>
+								<li class="part-layout"><a href="#">
+									<div class="trends-part-section">
+										<div><%= image_tag User.find_by_username("prasanth").photo.url(:small) %></div>
+										<div>
+											<div>Events getting on</div>
+											<div>Feb 28,2013</div>
+										</div>
+									</div></a>
+								</li>
+								<li class="part-layout"><a href="#">
+									<div class="trends-part-section">
+										<div><%= image_tag User.find_by_username("mukesh").photo.url(:small) %></div>
+										<div>
+											<div>Events getting on</div>
+											<div>Feb 28,2013</div>
+										</div>
+									</div></a>
+								</li>
+								<li class="part-layout"><a href="#">
+									<div class="trends-part-section">
+										<div><%= image_tag User.find_by_username("shankari").photo.url(:small) %></div>
+										<div>
+											<div>Events getting on</div>
+											<div>Feb 28,2013</div>
+										</div>
+									</div>
+								</li></a>
+							</ul>
+						</div>
+						<div class="show-layout">
+							<a href="#"><div class="showall" id="trend-show-all">Show All</div></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div>
+<script type="text/javascript">
+function showin(a){
+
+	$("#"+a+"-show-all").parent().parent().stop().animate({"bottom":"10px"});
+
+}
+function showout(a){
+
+	$("#"+a+"-show-all").parent().parent().stop().animate({"bottom":"-4px"});
+
+}
+$(function(){
+	$(document).ready(function($) {
+		$(".n-subscribe-area div div").hover(function(){
+			if($(this).attr("class")=="list-subscribed-section"){
+				
+				$("#"+$(this).attr("data-section")+"-info-first").fadeOut(300)
+				$("#"+$(this).attr("data-section")+"-info-second").delay(200).show("drop",{"direction":"down"},300)
+
+			}
+		},function(){
+			if($(this).attr("class")=="list-subscribed-section"){
+				
+				$("#"+$(this).attr("data-section")+"-info-first").delay(300).show("drop",{"direction":"up"},300)
+				$("#"+$(this).attr("data-section")+"-info-second").hide("drop",{"direction":"up"},300)
+
+			}
+		});
+		$(".n-follow-area div div").hover(function(){
+			if($(this).attr("class")=="list-follow-section"){
+				
+				$("#"+$(this).attr("data-section")+"-follow-first").fadeOut(300)
+				$("#"+$(this).attr("data-section")+"-follow-second").delay(200).show("drop",{"direction":"down"},300)
+
+			}
+		},function(){
+			if($(this).attr("class")=="list-follow-section"){
+				
+				$("#"+$(this).attr("data-section")+"-follow-first").delay(300).show("drop",{"direction":"up"},300)
+				$("#"+$(this).attr("data-section")+"-follow-second").hide("drop",{"direction":"up"},300)
+
+			}
+		});
+	});
+})
+
+</script>

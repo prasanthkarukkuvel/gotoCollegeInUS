@@ -1,0 +1,30 @@
+<div class="user-profile">
+  <div class="left-side">
+    <div class="photo-main">
+      <div class="photo"><%= image_tag User.find_by_username("imran").photo.url(:medium) %></div>
+    </div>
+    <div class="info">
+      <div class="name">Shankari Madhanagopalan</div>
+      <div class="address">
+        <div class="city">chennai </div>
+        <div class="e-mail"> Jagdeesh135@gmail.com</div>
+        <div class="date"> Joined on Jan 23, 2013</div>
+      </div>
+      <div class="following">
+        <div class="box1 metal radial">
+          <div class="box1a">10</div>
+          <div class="box1b"> Followers</div>
+        </div>
+        <div class="box2">
+          <div class="box2a">9</div>
+          <div class="box2b">Likes</div>
+        </div>
+        <div class="box3">
+          <div class="box3a">8</div>
+          <div class="box3b">Following</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-side"></div>
+</div>

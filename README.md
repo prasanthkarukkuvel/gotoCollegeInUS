@@ -1,4 +1,4 @@
-gotoCollegeInUS
+gotocollegeinus
 ===============
 
-Web site for Student who are all seeking for Higher Studies in US
+Go to College in US

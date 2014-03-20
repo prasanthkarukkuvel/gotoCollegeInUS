@@ -1,0 +1,181 @@
+
+<% if @key != "/exp/" %>
+
+<%= form_for(:activate_user,url: @set[:url],html:{id:"user-form",multipart:true}) do |f|%>
+<div class="cls-activate">
+      <div>Activate your account</div>
+      
+      <div>
+        <p class="tactive-success" id="active-username"></p>
+        <%= f.text_field :username ,placeholder:"New Username"%>
+        <div class="activate-error" id="username-failed">Username not available</div> </div>
+      <div>
+        <p class="tactive-error" id="active-password"></p>
+        <%= f.password_field :password ,placeholder:"New Password"%>
+        <div class="activate-error" id="password-failed">Minimum 6 characters</div> </div>
+      <div>
+        <p class="tactive-error" id="active-cpassword"></p>
+        <%= f.password_field :cpassword ,placeholder:"Confirm Password"%>
+        <div class="activate-error" id="cpassword-failed">Password Mismatch</div> </div>
+      <div style="vertical-align:middle">
+        
+        <div class="blue button-choose" id="getfile">Choose</div>
+        <div class="button-path button-active" id="path-text"><%= @set[:f] %></div>
+        <%= f.file_field :photo %>
+
+      </div>
+
+      <div>
+        <input type="submit" class="org" value="Activate"/>
+        <input type="reset" class="blue" value="Clear"/>
+        <input type="hidden" value="inactive" id="active-allow"/>
+      </div>
+      
+</div>
+<% end %>
+
+<script>
+$(function(){
+
+  $("#getfile").click(function(){
+
+      $('#activate_user_photo').trigger('click');
+
+  });
+
+  $('#activate_user_photo').change(function(){
+
+      var f = $('#activate_user_photo').val().split("\\");
+      var a = f[f.length-1].toLowerCase();
+      if (a.split(".")[1]=="jpg" || a.split(".")[1]=="png"){
+          $("#path-text").text(a)
+          $("#path-text").removeClass("button-failed").addClass("button-active")
+      }else{
+          $("#path-text").text("Invalid file type")
+          $("#path-text").removeClass("button-active").addClass("button-failed")
+          $('#activate_user_photo').val("")
+          return false
+      }
+         
+
+  })
+
+});
+
+
+$(function () {
+    $("#activate_user_username").blur(function () {
+        if ($(this).val().length < 5) {
+            $("#username-failed").text("Minimum 5 Characters required").fadeIn(100)
+            $("#active-username").removeClass("tactive-success").addClass("tactive-error").fadeIn(100)
+            $("#active-allow").val("inactive")
+            
+        }
+        else {
+            $.ajax({
+                url: "/check/username/?name=" + $(this).val(),
+                type: "GET",
+                success: function (result) {
+                    if (result == "2") {
+                        $("#username-failed").text("Username not available").fadeIn(100)
+                        $("#active-username").removeClass("tactive-success").addClass("tactive-error").fadeIn(100)
+                        $("#active-allow").val("inactive");
+                        
+                    }
+                    else if (result == "1") {
+                        $("#username-failed").fadeOut(100)
+                        $("#active-username").removeClass("tactive-error").addClass("tactive-success").fadeIn(100)
+                        $("#active-allow").val("active")
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+        }
+    });
+    $("#activate_user_password").blur(function () {
+
+        if ($(this).val().length < 6) {
+
+            $("#active-password").fadeIn(100);
+            $("#password-failed").text("Minimum 6 Characters required").fadeIn(100);
+           
+        }
+        else {
+
+            $("#active-password").fadeOut(100);
+            $("#password-failed").fadeOut(100);
+        }
+    });
+    $("#activate_user_cpassword").blur(function () {
+
+       if ($("#activate_user_cpassword").val() != $("#activate_user_password").val()) {
+
+            $("#active-cpassword").fadeIn(100);
+            $("#cpassword-failed").text("Password Mismatch").fadeIn(100);
+
+      }
+        else {
+          
+            $("#active-cpassword").fadeOut(100);
+            $("#cpassword-failed").fadeOut(100);
+        }
+    });
+    
+});
+$(function(){
+  $("#user-form").submit(function(){
+   var a = 1
+   
+      if ($("#activate_user_username").val().length < 5) {
+
+            $("#username-failed").text("Minimum 5 Characters required").fadeIn(100)
+            $("#active-username").removeClass("tactive-success").addClass("tactive-error").fadeIn(100)
+            $("#active-allow").val("inactive");
+            a = 0
+      }
+      else if ($("#active-allow").val()!="active")
+      { 
+            $("#username-failed").text("Username not available").fadeIn(100)
+            $("#active-username").removeClass("tactive-success").addClass("tactive-error").fadeIn(100)
+            a = 0
+      }
+      if ($("#activate_user_password").val().length < 6) {
+
+            $("#active-password").fadeIn(100);
+            $("#password-failed").text("Minimum 6 Characters required").fadeIn(100);
+            a = 0
+
+      }
+      if ($("#activate_user_cpassword").val().length < 6) {
+
+            $("#active-cpassword").fadeIn(100);
+            $("#cpassword-failed").text("Minimum 6 Characters required").fadeIn(100);
+            a = 0
+ 
+      }else if ($("#activate_user_cpassword").val() != $("#activate_user_password").val()) {
+
+            $("#active-cpassword").fadeIn(100);
+            $("#cpassword-failed").text("Password Mismatch").fadeIn(100);
+            a = 0
+      }
+      if ($("#activate_user_photo").val() == "") {
+
+            $("#path-text").removeClass("button-active").addClass("button-failed")
+            $("#path-text").text("choose <%= @set[:f]%>")
+            a = 0
+      }
+
+      if(a == 0)
+        return false
+
+
+  });
+});
+</script>
+
+<% else %>
+<div>Your link expired</div>
+<% end %>

@@ -1,0 +1,243 @@
+.page-create {
+	margin: 30px auto 0 auto;
+	width: 800px;
+	height: 450px;
+	border: #222 thin solid;
+	border-top-color: #333;
+	background: #1c1c1c;
+	background: -moz-linear-gradient(top,  #1c1c1c 0%, #050505 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c1c1c), color-stop(100%,#050505));
+	background: -webkit-linear-gradient(top,  #1c1c1c 0%,#050505 100%);
+	background: -o-linear-gradient(top,  #1c1c1c 0%,#050505 100%);
+	background: -ms-linear-gradient(top,  #1c1c1c 0%,#050505 100%);
+	background: linear-gradient(to bottom,  #1c1c1c 0%,#050505 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#050505',GradientType=0 );
+	-webkit-box-shadow: -1px -1px 10px 1px #000;
+	box-shadow: -1px -1px 10px 1px #000;
+	border-radius: 10px;
+	padding: 10px;
+	text-align:center;
+	.step-holder{
+		position:relative;
+		bottom:38px;
+		.steping{
+
+			font-size: 40px;
+			color:#ccc;
+			position:absolute;
+			font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;
+			text-shadow:2px 2px 10px #000;
+
+			span{
+
+				color:#F56F3A; 
+			}
+
+		}
+	}
+}
+.page-create .page-admin {
+	width: 250px;
+	height: 300px;
+	border: none;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:left;
+}
+.page-create .college-info {
+	width: 440px;
+	height: 300px;
+	border: none;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:left;
+}
+.page-create .page-admin input[type=text],.page-create .page-admin input[type=email] {
+	width: 200px;
+	padding: 10px;
+	border: 1px solid #000;
+	margin: 5px;
+	display: inline-block;
+	border-radius: 5px;
+	background:#ccc;
+	font-size: 18px;
+	box-shadow: inset 0 0 2px 1px #ddd;
+}
+.page-create .page-admin input[type=email]{
+	text-transform: lowercase;
+}
+.page-create .page-admin input[type=text]:focus,.page-create .page-admin input[type=email]:focus {
+	background:#fff;
+}
+.page-create .college-info input[type=email],.page-create .college-info input[type=text],.page-create .college-info select,.page-create .page-admin select {
+	width: 175px;
+	padding: 10px;
+	border: 1px solid #000;
+	margin: 5px;
+	border-radius: 5px;
+	background:#ccc;
+	font-size: 18px;
+	box-shadow: inset 0 0 2px 1px #ddd;
+}
+.page-create .college-info select {
+	padding:9px 10px;
+	width:197px;
+}
+.page-create .college-info select:focus {
+	background:#fff;
+}
+.page-create .page-admin select {
+	padding:8px 10px;
+	width:222px;
+}
+.page-create .page-admin select:focus {
+	background:#fff;
+}
+.page-create .college-info input[type=email]:focus,.page-create .college-info input[type=text]:focus{
+	background:#fff;
+}
+.page-create .college-info input[type=text]:nth-child(2)
+{
+
+	width:387px !important;
+}
+.page-create .page-create-controls input[type=submit], .page-create .page-create-controls input[type=reset] {
+	
+	text-align: center;
+	margin-top: 10px;
+	font-size: 18px;
+	padding: 5px 13px;
+	border-radius: 5px;
+	clear: both
+}
+.page-create input[type=reset]{
+
+	margin-left: 10px;
+}
+.page-create .page-create-controls{
+	width:700px;
+	margin:25px auto 0 auto;
+	text-align:center;
+	
+}
+.page-create .page-title-d{
+	color:#08ECFF; 
+	padding:10px 5px; 
+	font-size:24px;
+	font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;
+	text-shadow:1px 1px 2px #000;
+	
+}
+.error-display {
+	
+	
+	border: #000 thin solid;
+	border-radius: 5px;
+	padding: 5px 10px;
+	text-align: center;
+	margin:20px auto 0 auto;
+	
+	display:none;
+	background-color: #900;
+}
+.cls-page-create {
+	margin: 40px auto 0 auto;
+	width: 450px;
+	border: #222 thin solid;
+	border-top-color: #333;
+	background: #1c1c1c;
+	background: -moz-linear-gradient(top, #1c1c1c 0%, #050505 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1c1c1c), color-stop(100%, #050505));
+	background: -webkit-linear-gradient(top, #1c1c1c 0%, #050505 100%);
+	background: -o-linear-gradient(top, #1c1c1c 0%, #050505 100%);
+	background: -ms-linear-gradient(top, #1c1c1c 0%, #050505 100%);
+	background: linear-gradient(to bottom, #1c1c1c 0%, #050505 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#050505', GradientType=0 );
+	-webkit-box-shadow: -1px -1px 10px 1px #000;
+	box-shadow: -1px -1px 10px 1px #000;
+	border-radius: 10px;
+	padding: 35px 35px 30px 35px;
+
+	.step-holder{
+
+		position:relative;
+		bottom:62px;
+		
+		.steping{
+
+			font-size: 40px;
+			color:#ccc;
+			position:absolute;
+			font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;
+			text-shadow:2px 2px 10px #000;
+
+			span{
+
+				color:#F56F3A; 
+			}
+
+		}
+	}
+
+	input[type=text], input[type=email] {
+		width: 350px;
+		padding: 7px 15px;
+		border-radius: 5px;
+		background: #ccc;
+		border: 1px solid gray;
+		font-size: 20px;
+		margin-top: 3px;
+		margin-left:5px;
+	}
+	input[type=text]:focus, input[type=email]:focus {
+		background: #fff;
+	}
+	.error-tag{
+
+		color:#fc1616;
+		font-size:17px;
+		padding:7px 0 0 10px;
+		display:none;
+	}
+	.page-create-title {
+
+		color: #08ECFF;
+		padding: 0px 5px 5px 5px;
+		font-size: 25px;
+		text-align: left;
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		text-shadow:1px 1px 2px #000;
+	}
+	.creation {
+
+		width: 355px;
+		margin-left: 30px;
+
+		.text {
+
+			font-size: 18px;
+			margin-top:15px;
+			margin-bottom:10px;
+			color:#ccc;
+		}
+
+		.controls input[type=submit] {
+			width: 75px;
+			text-align: center;
+			margin-top: 20px;
+			font-size: 18px;
+			padding: 5px 10px;
+			border-radius: 5px;
+			position:relative;
+			left:305px;
+
+
+
+		}
+	}
+
+
+
+}
